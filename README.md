@@ -12,10 +12,16 @@ To make the assignment concrete, we discuss a common file system organization be
 
 There are three main data structures file systems manage:
 
-A disk block freelist. This is a simple data structure (for instance, a bitmap) that tracks what blocks on the disk have been allocated. This data structure is, for obvious reasons, persistent (i.e., on disk). You will have to establish some convention for locating it across reboots.
-Inodes. An inode is persistent memory that contains pointers to disk blocks or to ``indirect blocks'' (you can think of these as other inodes). Inodes are used to map a file to the disk representation of a file: each file has its own inode, the inode has pointers to all disk blocks that make up that file.
-Directories. Directories are persistent mappings of names to inode numbers for all the files and directories that the directory is responsible for.
-Given this class of objects, the following algorithms are used to create, grow, and delete a file.
+```A disk block freelist. ```
+
+This is a simple data structure (for instance, a bitmap) that tracks what blocks on the disk have been allocated. This data structure is, for obvious reasons, persistent (i.e., on disk). You will have to establish some convention for locating it across reboots.
+
+```Inodes.```
+
+An inode is persistent memory that contains pointers to disk blocks or to ``indirect blocks'' (you can think of these as other inodes). Inodes are used to map a file to the disk representation of a file: each file has its own inode, the inode has pointers to all disk blocks that make up that file.
+
+```Directories.```
+Directories are persistent mappings of names to inode numbers for all the files and directories that the directory is responsible for.
 
 ```The actions to create file:```
 
