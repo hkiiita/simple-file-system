@@ -37,9 +37,23 @@ Modify the file's inode to point to these blocks.
 Write the data the user gives to these blocks.
 Flush all modifications to disk.
 
+
 ```To shrink a file:```
 
 Load the file's associated inode into memory.
 Remove pointers to the disk blocks from the inode.
 Mark the disk blocks as free.
 Flush all modifications to disk.
+
+
+Modifying directories is similar.
+
+Be careful about when modifications to file system state are made persistent. For instance, in the case of creating a file, if we flush modifications to disk after stage (1), a crash that happened before (2) would cause us to have a disk block allocated that was not used. If we did not flush modifications to disk at all, then a crash would cause the file to be lost. You will have to pay particular attention to this and similar problems in the third part of the assignment.
+
+Survive random crashrs -- maintain state persistently. In particular, it should be able to run, be powered down, and then be ``rebooted'' in the state that it was in when it was shutdown (i.e., all files that were written at shutdown time should still be there, and no garbage files should suddenly appear).
+
+In addition to correctness, consider space efficiency: file system should have a low overhead per byte of file data.
+
+```TODO :```
+### Implement block caching.
+
