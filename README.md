@@ -54,6 +54,9 @@ Survive random crashrs -- maintain state persistently. In particular, it should 
 
 In addition to correctness, consider space efficiency: file system should have a low overhead per byte of file data.
 
-```TODO :```
-### Implement block caching.
+```TODO :``` Implement block caching.
+
+
+
+Implement your file system as an NFS server on  local machine. Then mount that NFS server and the file system becomes part of the file system name space.
 
